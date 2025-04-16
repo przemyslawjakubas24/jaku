@@ -74,7 +74,7 @@ header h1 {
 }
 
 header .logo {
-	height: 80px;
+	height: 60px;
 }
 
 nav ul {
@@ -105,7 +105,7 @@ nav ul li a:hover {
 	align-items: center;
 	text-align: center;
 	color: white;
-	padding: 0 20px;
+	padding: 0 10px;
 }
 
 .hero-content h2 {
