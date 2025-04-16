@@ -1,50 +1,80 @@
-# Furniture Website
+# Balloon Magic - Professional Balloon Decorations Website
 
-This project is a responsive website for a small custom furniture manufacturing company. It showcases the company's services, portfolio, and provides contact information for potential clients.
+This repository contains the source code for the Balloon Magic website - a professional balloon decoration business owned by Ewa Jakubas.
 
-## Project Structure
+## Project Overview
 
-```
-furniture-website
-├── assets
-│   ├── css
-│   │   ├── style.css
-│   │   └── responsive.css
-│   ├── js
-│   │   └── main.js
-│   └── fonts
-├── index.html
-├── pages
-│   ├── about.html
-│   ├── portfolio.html
-│   ├── services.html
-│   └── contact.html
-└── README.md
-```
+This is a responsive website for a balloon decoration business that offers services for various events such as weddings, birthdays, corporate events, and more. The website showcases the company's portfolio, services, and provides contact information.
 
 ## Features
 
-- **Responsive Design**: The website is fully responsive and adapts to different screen sizes.
-- **Interactive Elements**: JavaScript is used for form validation and smooth scrolling.
-- **Portfolio Showcase**: A dedicated page to display previous projects and custom furniture designs.
-- **Service Details**: Information about the types of custom furniture and the design process.
+- Responsive design that works on mobile, tablet, and desktop
+- Hero section with a call-to-action button
+- Services section highlighting different decoration options
+- Portfolio gallery showcasing previous work
+- Contact form for inquiries and bookings
+- Social media integration
+- Smooth scroll navigation
+- Scroll-to-top button
+- Animation effects for enhanced user experience
 
-## Setup Instructions
+## File Structure
 
-1. Clone the repository or download the project files.
-2. Open the `index.html` file in a web browser to view the homepage.
-3. Navigate through the pages using the navigation menu.
+```
+.
+├── assets/
+│   ├── css/
+│   │   └── style.css
+│   ├── fonts/
+│   ├── images/
+│   │   ├── gallery/
+│   │   │   ├── animacje/
+│   │   │   ├── dekoracje_balonowe/
+│   │   │   ├── fotoscianka/
+│   │   │   └── ...
+│   │   ├── hero-bg.jpg
+│   │   ├── logo.svg
+│   │   └── ...
+│   └── js/
+│       └── main.js
+├── pages/
+│   ├── about.html
+│   ├── contact.html
+│   ├── portfolio.html
+│   └── services.html
+├── index.html
+└── README.md
+```
 
 ## Technologies Used
 
-- HTML
-- CSS
-- JavaScript
+- HTML5
+- CSS3
+- JavaScript (ES6+)
+- Font Awesome for icons
 
-## Author
+## Getting Started
 
-[Your Name]  
-[Your Contact Information]  
-[Your Company Name]  
+1. Clone this repository
+2. Open `index.html` in your browser to view the website
 
-Feel free to reach out for any inquiries or custom furniture requests!
+## Development
+
+To make changes to the website:
+
+1. Edit the HTML files to modify structure
+2. Update `style.css` for styling changes
+3. Modify `main.js` for functionality adjustments
+
+## Browser Compatibility
+
+This website is designed to work with modern browsers including:
+
+- Chrome
+- Firefox
+- Safari
+- Edge
+
+## License
+
+All rights reserved © 2025 Ewa Jakubas
