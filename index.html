@@ -123,8 +123,9 @@
                     <span itemprop="postalCode">00-001</span> <span itemprop="addressLocality">Warszawa</span>
                 </address>
                 </p>
-                <p><i class="fas fa-phone"></i> +48 123 456 789</p>
-                <p><i class="fas fa-envelope"></i> kontakt@balloonmagic.pl</p>
+                <p><i class="fas fa-phone"></i> <a href="tel:+48123456789">+48 123 456 789</a></p>
+                <p><i class="fas fa-envelope"></i> <a href="mailto:kontakt@balloonmagic.pl">kontakt@balloonmagic.pl</a>
+                </p>
                 <!-- Poprawione ikony social media -->
                 <div class="social-links">
                     <a href="https://facebook.com/twojstrona" target="_blank" rel="noopener" aria-label="Facebook">
@@ -148,23 +149,23 @@
                     <input type="email" placeholder="Email" required>
                     <input type="text" placeholder="Telefon">
                     <input type="text" placeholder="Rodzaj wydarzenia">
-                    <input type="date" placeholder="Data wydarzenia">
+                    <input type="text" class="date-input" placeholder="Data wydarzenia" onfocus="this.type='date'">
                     <textarea placeholder="Twoja wiadomość" required></textarea>
                     <button type="submit" class="btn">Wyślij wiadomość</button>
                 </form>
             </div>
         </div>
     </section>
-    
+
     <footer>
         <p>&copy; 2025 Ewa Jakubas. Wszelkie prawa zastrzeżone.</p>
     </footer>
-    
+
     <!-- Przycisk "Scroll to Top" -->
     <button id="scrollToTop" class="scroll-to-top" type="button" title="Przewiń do góry">
         <i class="fas fa-arrow-up"></i>
     </button>
-    
+
     <script src="./assets/js/main.js"></script>
 </body>
 

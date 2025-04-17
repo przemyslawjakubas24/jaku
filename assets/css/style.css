@@ -337,7 +337,7 @@ section h2:after {
 	margin-right: 0;
 }
 
-.social-links a:hover {
+social-links a:hover {
 	background-color: var(--secondary-color);
 	transform: translateY(-3px);
 }
@@ -364,6 +364,12 @@ section h2:after {
 .contact-form button {
 	width: 50%;
 	padding: 20px 0;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form button {
+	font-size: 1rem;
 }
 
 /* Footer */
@@ -443,4 +449,16 @@ footer {
 	.contact-container {
 		margin-bottom: 20px;
 	}
+}
+
+/* Fade-in Animation */
+.fade-in {
+	opacity: 0;
+	transform: translateY(20px);
+	transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.fade-in.visible {
+	opacity: 1;
+	transform: translateY(0);
 }
