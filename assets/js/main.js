@@ -80,66 +80,33 @@ document.addEventListener('DOMContentLoaded', function () {
 		})
 	}
 
-	// Scroll to top button
-	const scrollBtn = document.createElement('button')
-	scrollBtn.innerHTML = '↑'
-	scrollBtn.className = 'scroll-top'
-	document.body.appendChild(scrollBtn)
+	// Obsługa przycisku Scroll to Top
+	const scrollToTopButton = document.getElementById('scrollToTop')
 
+	// Pokazuje przycisk, gdy użytkownik przewinie stronę w dół
 	window.addEventListener('scroll', () => {
-		if (window.pageYOffset > 100) {
-			scrollBtn.classList.add('visible')
-		} else {
-			scrollBtn.classList.remove('visible')
-		}
-	})
-
-	scrollBtn.addEventListener('click', () => {
-		window.scrollTo({
-			top: 0,
-			behavior: 'smooth',
-		})
-	})
-
-	// Funkcja dla przycisku Scroll to Top
-	const scrollBtnNew = document.getElementById('scrollToTop')
-
-	// Pokaż/ukryj przycisk w zależności od pozycji przewijania
-	window.addEventListener('scroll', function () {
 		if (window.pageYOffset > 300) {
-			scrollBtnNew.classList.add('show')
+			// Pokazuj przycisk po przewinięciu 300px
+			scrollToTopButton.classList.add('show')
+			scrollToTopButton.style.display = 'block'
 		} else {
-			scrollBtnNew.classList.remove('show')
+			scrollToTopButton.classList.remove('show')
+			scrollToTopButton.style.display = 'none'
 		}
 	})
 
-	// Przewiń do góry po kliknięciu przycisku
-	scrollBtnNew.addEventListener('click', function () {
+	// Przewija do góry po kliknięciu przycisku
+	scrollToTopButton.addEventListener('click', () => {
 		window.scrollTo({
 			top: 0,
 			behavior: 'smooth',
 		})
 	})
 
-	// Sticky header
-	const header = document.querySelector('header')
-	const hero = document.querySelector('.hero')
-
-	window.addEventListener('scroll', function () {
-		if (window.scrollY > 50) {
-			header.style.padding = '5px 5%'
-			header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)'
-		} else {
-			header.style.padding = '10px 5%'
-			header.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.05)'
-		}
-	})
-
-	// Animation for service cards
+	// Animate service cards
 	const serviceCards = document.querySelectorAll('.service-card')
-
 	const cardObserverOptions = {
-		threshold: 0.5,
+		threshold: 0.2,
 		rootMargin: '0px',
 	}
 
@@ -159,7 +126,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		cardObserver.observe(card)
 	})
 
-	// Interactive portfolio gallery - łączymy obie implementacje
+	// Interactive portfolio gallery
 	const portfolioItems = document.querySelectorAll('.portfolio-item')
 
 	portfolioItems.forEach(item => {
@@ -180,7 +147,10 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 
 	// Add balloon animation to the hero section (just for fun)
+	const hero = document.querySelector('.hero')
 	function createBalloon() {
+		if (!hero) return
+
 		const colors = ['#ff69b4', '#8a2be2', '#00bfff', '#ff6347', '#32cd32']
 		const balloon = document.createElement('div')
 		const size = Math.random() * 30 + 20
@@ -209,7 +179,9 @@ document.addEventListener('DOMContentLoaded', function () {
 
 		// Remove the balloon after animation to avoid memory issues
 		setTimeout(() => {
-			hero.removeChild(balloon)
+			if (hero.contains(balloon)) {
+				hero.removeChild(balloon)
+			}
 		}, 20000)
 	}
 
@@ -230,5 +202,7 @@ document.addEventListener('DOMContentLoaded', function () {
 	document.head.appendChild(style)
 
 	// Create balloons at random intervals
-	setInterval(createBalloon, 2000)
+	if (hero) {
+		setInterval(createBalloon, 2000)
+	}
 })

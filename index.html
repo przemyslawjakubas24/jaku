@@ -4,15 +4,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jaku - Profesjonalne dekoracje balonowe</title>
+    <meta name="robots" content="noindex, nofollow">
+    <title>Ewa Jakubas - Profesjonalne dekoracje balonowe</title>
     <link rel="stylesheet" href="./assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
 </head>
 
 <body>
     <header>
-        <h1>Jaku - dekoracje balonowe</h1>
-        <img src="./assets/images/logo.svg" alt="Logo" class="logo">
+        <h1>Ewa Jakubas - dekoracje balonowe</h1>
+        <a class="logo" href="#"><img src="./assets/images/logo.svg" alt="Logo" class="logo__image"></a>
         <nav>
             <ul>
                 <li><a href="#home">Strona główna</a></li>
@@ -110,7 +116,13 @@
         <div class="contact-container">
             <div class="contact-info">
                 <h3>Dane kontaktowe</h3>
-                <p><i class="fas fa-map-marker-alt"></i> ul. Kolorowa 5, 00-001 Warszawa</p>
+                <p>
+                <address itemscope itemtype="http://schema.org/PostalAddress">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span itemprop="streetAddress">ul. Kolorowa 5</span>
+                    <span itemprop="postalCode">00-001</span> <span itemprop="addressLocality">Warszawa</span>
+                </address>
+                </p>
                 <p><i class="fas fa-phone"></i> +48 123 456 789</p>
                 <p><i class="fas fa-envelope"></i> kontakt@balloonmagic.pl</p>
                 <!-- Poprawione ikony social media -->
@@ -143,16 +155,16 @@
             </div>
         </div>
     </section>
-
+    
     <footer>
         <p>&copy; 2025 Ewa Jakubas. Wszelkie prawa zastrzeżone.</p>
     </footer>
-
+    
     <!-- Przycisk "Scroll to Top" -->
-    <button id="scrollToTop" class="scroll-to-top" title="Przewiń do góry">
+    <button id="scrollToTop" class="scroll-to-top" type="button" title="Przewiń do góry">
         <i class="fas fa-arrow-up"></i>
     </button>
-
+    
     <script src="./assets/js/main.js"></script>
 </body>
 
