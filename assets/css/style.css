@@ -75,6 +75,7 @@ header h1 {
 	color: var(--primary-color);
 	font-size: 2rem;
 	margin-bottom: 5px;
+	margin-right: 15px;
 }
 
 header .logo {
@@ -101,6 +102,26 @@ nav ul li a {
 
 nav ul li a:hover {
 	color: var(--primary-color);
+}
+
+/* Hamburger Menu */
+.hamburger {
+	display: none;
+	flex-direction: column;
+	justify-content: space-between;
+	width: 30px;
+	height: 21px;
+	cursor: pointer;
+	z-index: 1001;
+}
+
+.hamburger span {
+	display: block;
+	height: 3px;
+	width: 100%;
+	background-color: var(--primary-color);
+	border-radius: 3px;
+	transition: all 0.3s ease;
 }
 
 /* Hero Section */
@@ -392,7 +413,7 @@ footer {
 	padding: 15px 20px;
 	cursor: pointer;
 	z-index: 1000;
-	display: none; /* Będzie pokazywany przez JavaScript po przewinięciu */
+	display: none;
 }
 
 .scroll-to-top:hover {
@@ -408,16 +429,82 @@ footer {
 
 @media (max-width: 768px) {
 	header {
-		flex-direction: column;
 		padding: 15px 5%;
+		flex-direction: column;
 	}
 
-	nav ul {
-		margin-top: 15px;
+	/* Nagłówek h1 zajmuje całą szerokość i jest wyśrodkowany */
+	header h1 {
+		font-size: 1.5rem;
+		margin-bottom: 10px;
+		width: 100%;
+		text-align: center;
+		margin-right: 0;
 	}
 
-	nav ul li {
-		margin-left: 15px;
+	/* Nowy kontener dla logo i hamburger menu */
+	.header-icons-container {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		width: 100%;
+		margin-top: 5px;
+	}
+
+	/* Logo po lewej stronie */
+	header .logo {
+		width: 60px;
+		height: 60px;
+		margin-right: auto;
+	}
+
+	header .logo .logo__image {
+		height: 60px;
+	}
+
+	/* Hamburger po prawej stronie */
+	.hamburger {
+		display: flex;
+		margin-left: auto;
+	}
+
+	.nav-menu {
+		position: fixed;
+		top: 0;
+		right: -100%;
+		height: 100vh;
+		width: 70%;
+		background-color: white;
+		box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+		padding-top: 80px;
+		transition: right 0.3s ease;
+		z-index: 1000;
+	}
+
+	.nav-menu.active {
+		right: 0;
+	}
+
+	.nav-links {
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.nav-links li {
+		margin: 15px 0;
+	}
+
+	/* Hamburger animation */
+	.hamburger.active span:nth-child(1) {
+		transform: translateY(9px) rotate(45deg);
+	}
+
+	.hamburger.active span:nth-child(2) {
+		opacity: 0;
+	}
+
+	.hamburger.active span:nth-child(3) {
+		transform: translateY(-9px) rotate(-45deg);
 	}
 
 	.hero-content h2 {
@@ -435,9 +522,25 @@ footer {
 }
 
 @media (max-width: 576px) {
-	nav ul {
-		flex-wrap: wrap;
-		justify-content: center;
+	.header-icons-container {
+		padding: 0 10px;
+	}
+
+	header h1 {
+		font-size: 1.3rem;
+	}
+
+	header .logo {
+		width: 50px;
+		height: 50px;
+	}
+
+	header .logo .logo__image {
+		height: 50px;
+	}
+
+	.nav-menu {
+		width: 80%;
 	}
 
 	.hero-content h2 {

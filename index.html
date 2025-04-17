@@ -17,10 +17,21 @@
 
 <body>
     <header>
-        <h1>Ewa Jakubas - dekoracje balonowe</h1>
-        <a class="logo" href="#"><img src="./assets/images/logo.svg" alt="Logo" class="logo__image"></a>
-        <nav>
-            <ul>
+        <h1>Ewa Jakubas - dekoracja balonowe</h1>
+        <div class="header-icons-container">
+            <div class="logo">
+                <a href="/">
+                    <img src="./assets/images/logo.svg" alt="Logo" class="logo__image">
+                </a>
+            </div>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+        <nav class="nav-menu">
+            <ul class="nav-links">
                 <li><a href="#home">Strona główna</a></li>
                 <li><a href="#services">Usługi</a></li>
                 <li><a href="#portfolio">Realizacje</a></li>
@@ -162,7 +173,7 @@
     </footer>
 
     <!-- Przycisk "Scroll to Top" -->
-    <button id="scrollToTop" class="scroll-to-top" type="button" title="Przewiń do góry">
+    <button id="scrollToTop" class="scroll-to-top btn" type="button" title="Przewiń do góry">
         <i class="fas fa-arrow-up"></i>
     </button>
 
