@@ -113,13 +113,13 @@ document.addEventListener('DOMContentLoaded', function () {
 	const cardObserver = new IntersectionObserver(function (entries, observer) {
 		entries.forEach(entry => {
 			if (entry.isIntersecting) {
-				entry.target.style.opacity = 1
-				entry.target.style.transform = 'translateY(0)'
+				entry.target.classList.add('visible')
 			}
 		})
 	}, cardObserverOptions)
 
 	serviceCards.forEach(card => {
+		card.classList.add('fade-in') // Dodaj klasę fade-in zamiast stylów inline
 		cardObserver.observe(card)
 	})
 

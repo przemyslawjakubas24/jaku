@@ -337,7 +337,7 @@ section h2:after {
 	margin-right: 0;
 }
 
-social-links a:hover {
+.social-links a:hover {
 	background-color: var(--secondary-color);
 	transform: translateY(-3px);
 }
