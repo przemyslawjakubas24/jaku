@@ -298,13 +298,13 @@ section h2:after {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	gap: 30px;
-	max-width: 1200px; /* Dodajemy maksymalną szerokość kontenera */
-	margin: 0 auto; /* Centrujemy kontener */
+	max-width: 1200px;
+	margin: 0 auto;
 }
 
 @media (min-width: 992px) {
 	.portfolio-container {
-		grid-template-columns: repeat(3, 1fr); /* Dokładnie 3 kolumny na dużych ekranach */
+		grid-template-columns: repeat(2, 1fr); /* Zmieniono z 3 na 2 kolumny na dużych ekranach */
 	}
 }
 
@@ -340,14 +340,13 @@ section h2:after {
 	filter: brightness(1.1);
 }
 
-/* Poprawiony styl dla portfolio-overlay, aby tekst był bardziej widoczny */
 .portfolio-overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.7); /* Ciemniejsze tło */
+	background-color: rgba(0, 0, 0, 0.7);
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
@@ -363,13 +362,13 @@ section h2:after {
 	margin-bottom: 10px;
 	font-size: 1.3rem;
 	font-weight: 600;
-	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Dodanie cienia do tekstu */
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .portfolio-overlay p {
-	color: #f8f8f8; /* Jaśniejszy kolor tekstu */
+	color: #f8f8f8;
 	font-size: 1rem;
-	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8); /* Dodanie cienia do tekstu */
+	text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
 }
 
 .portfolio-item:hover .portfolio-overlay {
