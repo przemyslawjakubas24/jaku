@@ -1,8 +1,12 @@
 document.addEventListener('DOMContentLoaded', function () {
-	// Hamburger menu
+	// Zapisz często używane elementy DOM jako stałe
+	const header = document.querySelector('header')
 	const hamburger = document.querySelector('.hamburger')
 	const navMenu = document.querySelector('.nav-menu')
 	const navLinks = document.querySelectorAll('.nav-links li a')
+	const hero = document.querySelector('.hero')
+	const scrollToTopButton = document.getElementById('scrollToTop')
+	const logo = document.querySelector('.logo')
 
 	if (hamburger) {
 		hamburger.addEventListener('click', () => {
@@ -36,15 +40,6 @@ document.addEventListener('DOMContentLoaded', function () {
 			document.body.classList.remove('menu-open')
 		}
 	})
-
-	// Add this to your existing CSS to prevent scrolling when menu is open
-	const menuStyle = document.createElement('style')
-	menuStyle.innerHTML = `
-		body.menu-open {
-			overflow: hidden;
-		}
-	`
-	document.head.appendChild(menuStyle)
 
 	// Smooth scrolling for anchor links
 	const links = document.querySelectorAll('a[href^="#"]')
@@ -119,8 +114,6 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	// Obsługa przycisku Scroll to Top
-	const scrollToTopButton = document.getElementById('scrollToTop')
-
 	// Pokazuje przycisk, gdy użytkownik przewinie stronę w dół
 	window.addEventListener('scroll', () => {
 		if (window.pageYOffset > 300) {
@@ -182,16 +175,11 @@ document.addEventListener('DOMContentLoaded', function () {
 	})
 
 	// Add balloon animation to the hero section (just for fun)
-	const hero = document.querySelector('.hero')
-	console.log('Hero element found:', hero) // Diagnostic log
 
 	function createBalloon() {
 		if (!hero) {
-			console.log('Hero element not found, cannot create balloons')
 			return
 		}
-
-		console.log('Creating balloon...') // Diagnostic log
 
 		const colors = ['#ff69b4', '#8a2be2', '#00bfff', '#ff6347', '#32cd32']
 		const balloon = document.createElement('div')
@@ -249,13 +237,10 @@ document.addEventListener('DOMContentLoaded', function () {
 		balloon.appendChild(string)
 		hero.appendChild(balloon)
 
-		console.log('Balloon created and added to hero:', balloon) // Diagnostic log
-
 		// Remove the balloon after animation to avoid memory issues
 		setTimeout(() => {
 			if (hero.contains(balloon)) {
 				hero.removeChild(balloon)
-				console.log('Balloon removed')
 			}
 		}, (animationDuration + floatDelay) * 1000)
 	}
@@ -315,19 +300,23 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	`
 	document.head.appendChild(balloonStyle)
-	console.log('Balloon styles added to document head') // Diagnostic log
 
 	// Create balloons at random intervals
 	if (hero) {
-		console.log('Starting balloon creation') // Diagnostic log
-
 		// Create a few balloons immediately
 		for (let i = 0; i < 3; i++) {
 			setTimeout(() => createBalloon(), i * 700)
 		}
 
 		// Continue creating balloons at random intervals
-		setInterval(createBalloon, 3000 + Math.random() * 2000)
+		function scheduleNextBalloon() {
+			const delay = 3000 + Math.random() * 2000
+			setTimeout(() => {
+				createBalloon()
+				scheduleNextBalloon()
+			}, delay)
+		}
+		scheduleNextBalloon()
 	} else {
 		console.error('Hero element not found, balloon animation disabled')
 	}
@@ -459,33 +448,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	}
 
-	// Sticky header and logo resize on scroll
-	// Zakomentowany oryginalny event listener, który powoduje problem:
-	/* 
-	window.addEventListener('scroll', function () {
-		const header = document.querySelector('header') // Zmieniono z '.navbar' na 'header'
-		header.classList.toggle('sticky', window.scrollY > 0)
-
-		const logo = document.querySelector('.logo')
-		if (window.scrollY > 0) {
-			logo.style.width = '60px'
-			logo.style.height = '60px'
-		} else {
-			logo.style.width = '80px'
-			logo.style.height = '80px'
-		}
-	})
-	*/
-
 	// Sticky header i zmiana rozmiaru logo podczas przewijania
 	window.addEventListener('scroll', function () {
-		const header = document.querySelector('header')
-		const logo = document.querySelector('.logo')
-
 		// Dodaj klasę sticky przy przewijaniu
 		header.classList.toggle('sticky', window.scrollY > 0)
-
-		// Nie używamy już inline stylów, bo obsługujemy to przez CSS
-		// Usunięte linie ze style.width i style.height
 	})
 })
