@@ -458,4 +458,19 @@ document.addEventListener('DOMContentLoaded', function () {
 			prevImage()
 		}
 	}
+
+	// Sticky header and logo resize on scroll
+	window.addEventListener('scroll', function () {
+		const header = document.querySelector('header') // Zmieniono z '.navbar' na 'header'
+		header.classList.toggle('sticky', window.scrollY > 0)
+
+		const logo = document.querySelector('.logo')
+		if (window.scrollY > 0) {
+			logo.style.width = '60px'
+			logo.style.height = '60px'
+		} else {
+			logo.style.width = '80px'
+			logo.style.height = '80px'
+		}
+	})
 })

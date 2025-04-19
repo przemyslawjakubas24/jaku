@@ -66,6 +66,12 @@ header {
 	justify-content: space-between;
 	align-items: center;
 	padding: 20px 5%;
+	transition: all 0.3s ease;
+}
+
+header.sticky {
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 header h1 {
@@ -73,9 +79,13 @@ header h1 {
 	font-weight: 400;
 	font-style: normal;
 	color: var(--primary-color);
-	font-size: 2rem;
-	margin-bottom: 5px;
+	font-size: 32px; /* lub inny rozmiar domyślny */
+	transition: font-size 0.3s ease;
 	margin-right: 15px;
+}
+
+header.sticky h1 {
+	font-size: 24px; /* zmniejszony rozmiar podczas przewijania */
 }
 
 header .logo {
@@ -85,6 +95,17 @@ header .logo {
 
 header .logo .logo__image {
 	height: 80px;
+}
+
+.logo img {
+	width: 80px;
+	height: 80px; /* Domyślny rozmiar */
+	transition: all 0.3s ease; /* Płynne przejście dla wszystkich zmian */
+}
+
+.sticky .logo img {
+	width: 60px;
+	height: 60px; /* Rozmiar podczas przewijania */
 }
 
 nav ul {
@@ -156,6 +177,16 @@ nav ul li a:hover {
 	margin-right: auto;
 }
 
+.hero-content .btn {
+	padding: 18px 64px;
+}
+
+@media (max-width: 576px) {
+	.hero-content .btn {
+		width: 100%;
+	}
+}
+
 /* Section Styling */
 section {
 	padding: 80px 5%;
@@ -210,8 +241,28 @@ section h2:after {
 
 .services-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	gap: 30px;
+	max-width: 1200px; /* Dodajemy maksymalną szerokość kontenera */
+	margin: 0 auto; /* Centrujemy kontener */
+}
+
+@media (min-width: 992px) {
+	.services-container {
+		grid-template-columns: repeat(3, 1fr); /* Dokładnie 3 kolumny na dużych ekranach */
+	}
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+	.services-container {
+		grid-template-columns: repeat(2, 1fr); /* 2 kolumny na średnich ekranach */
+	}
+}
+
+@media (max-width: 767px) {
+	.services-container {
+		grid-template-columns: 1fr; /* 1 kolumna na małych ekranach */
+	}
 }
 
 .service-card {
@@ -242,8 +293,28 @@ section h2:after {
 /* Portfolio Section */
 .portfolio-container {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-	gap: 20px;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 30px;
+	max-width: 1200px; /* Dodajemy maksymalną szerokość kontenera */
+	margin: 0 auto; /* Centrujemy kontener */
+}
+
+@media (min-width: 992px) {
+	.portfolio-container {
+		grid-template-columns: repeat(3, 1fr); /* Dokładnie 3 kolumny na dużych ekranach */
+	}
+}
+
+@media (max-width: 991px) and (min-width: 768px) {
+	.portfolio-container {
+		grid-template-columns: repeat(2, 1fr); /* 2 kolumny na średnich ekranach */
+	}
+}
+
+@media (max-width: 767px) {
+	.portfolio-container {
+		grid-template-columns: 1fr; /* 1 kolumna na małych ekranach */
+	}
 }
 
 .portfolio-item {
@@ -391,6 +462,12 @@ section h2:after {
 .contact-form button {
 	width: 50%;
 	padding: 20px 0;
+}
+
+@media (max-width: 576px) {
+	.contact-form button {
+		width: 100%;
+	}
 }
 
 .contact-form input,
@@ -650,9 +727,7 @@ footer {
 }
 
 .lightbox-close:hover {
-	color: var(--primary-color);
-	transform: scale(1.1);
-	background-color: rgba(0, 0, 0, 0.8); /* Ciemniejsze tło przy najechaniu */
+	background-color: var(--primary-color);
 }
 
 .lightbox-prev,
