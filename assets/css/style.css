@@ -251,6 +251,8 @@ section h2:after {
 	border-radius: 10px;
 	overflow: hidden;
 	height: 250px;
+	cursor: pointer;
+	transition: var(--transition);
 }
 
 .portfolio-item img {
@@ -258,6 +260,10 @@ section h2:after {
 	height: 100%;
 	object-fit: cover;
 	transition: var(--transition);
+}
+
+.portfolio-item:hover img {
+	filter: brightness(1.1);
 }
 
 /* Poprawiony styl dla portfolio-overlay, aby tekst był bardziej widoczny */
@@ -564,4 +570,145 @@ footer {
 .fade-in.visible {
 	opacity: 1;
 	transform: translateY(0);
+}
+
+/* Lightbox Styles */
+.lightbox {
+	display: none;
+	position: fixed;
+	z-index: 2000;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.9);
+	overflow: hidden;
+}
+
+.lightbox.active {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	animation: fadeIn 0.3s ease;
+}
+
+.lightbox-content {
+	position: relative;
+	max-width: 90%;
+	max-height: 90%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.lightbox-image {
+	max-width: 100%;
+	max-height: 80vh;
+	object-fit: contain;
+	border-radius: 5px;
+	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+
+.lightbox-caption {
+	color: white;
+	text-align: center;
+	margin-top: 15px;
+	padding: 10px;
+	width: 100%;
+}
+
+.lightbox-title {
+	font-size: 1.5rem;
+	margin-bottom: 5px;
+}
+
+.lightbox-description {
+	font-size: 1rem;
+	opacity: 0.8;
+}
+
+.lightbox-close {
+	position: absolute;
+	top: -40px;
+	right: 0;
+	color: white;
+	font-size: 35px;
+	font-weight: bold;
+	cursor: pointer;
+	transition: var(--transition);
+}
+
+.lightbox-close:hover {
+	color: var(--primary-color);
+}
+
+.lightbox-prev,
+.lightbox-next {
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	background: rgba(0, 0, 0, 0.5);
+	color: white;
+	border: none;
+	border-radius: 50%;
+	width: 50px;
+	height: 50px;
+	font-size: 1.5rem;
+	cursor: pointer;
+	transition: var(--transition);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.lightbox-prev {
+	left: -70px;
+}
+
+.lightbox-next {
+	right: -70px;
+}
+
+.lightbox-prev:hover,
+.lightbox-next:hover {
+	background: var(--primary-color);
+}
+
+@keyframes fadeIn {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+
+@media (max-width: 768px) {
+	.lightbox-prev,
+	.lightbox-next {
+		width: 40px;
+		height: 40px;
+		font-size: 1.2rem;
+	}
+
+	.lightbox-prev {
+		left: 10px;
+	}
+
+	.lightbox-next {
+		right: 10px;
+	}
+
+	.lightbox-title {
+		font-size: 1.2rem;
+	}
+
+	.lightbox-description {
+		font-size: 0.9rem;
+	}
+}
+
+/* Prevent scrolling when lightbox is open */
+body.lightbox-open {
+	overflow: hidden;
 }

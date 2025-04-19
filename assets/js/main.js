@@ -331,4 +331,131 @@ document.addEventListener('DOMContentLoaded', function () {
 	} else {
 		console.error('Hero element not found, balloon animation disabled')
 	}
+
+	// Lightbox dla portfolio
+	const lightbox = document.getElementById('portfolioLightbox')
+	const lightboxImg = lightbox.querySelector('.lightbox-image')
+	const lightboxTitle = lightbox.querySelector('.lightbox-title')
+	const lightboxDesc = lightbox.querySelector('.lightbox-description')
+	const lightboxClose = lightbox.querySelector('.lightbox-close')
+	const lightboxNext = lightbox.querySelector('.lightbox-next')
+	const lightboxPrev = lightbox.querySelector('.lightbox-prev')
+
+	let currentIndex = 0
+	const portfolioData = []
+
+	// Zbierz dane o wszystkich elementach portfolio
+	portfolioItems.forEach((item, index) => {
+		const img = item.querySelector('img')
+		const overlay = item.querySelector('.portfolio-overlay')
+		const title = overlay.querySelector('h3')?.textContent || ''
+		const description = overlay.querySelector('p')?.textContent || ''
+
+		portfolioData.push({
+			src: img.src,
+			alt: img.alt,
+			title: title,
+			description: description,
+		})
+
+		// Usuń stare event listenery
+		item.removeEventListener('click', function () {})
+		item.removeEventListener('mouseover', () => {})
+		item.removeEventListener('mouseout', () => {})
+
+		// Dodaj nowy event listener dla otwierania lightboxa
+		item.addEventListener('click', function () {
+			openLightbox(index)
+		})
+	})
+
+	// Funkcja otwierająca lightbox
+	function openLightbox(index) {
+		currentIndex = index
+		updateLightboxContent()
+		lightbox.classList.add('active')
+		document.body.classList.add('lightbox-open')
+	}
+
+	// Funkcja aktualizująca zawartość lightboxa
+	function updateLightboxContent() {
+		const item = portfolioData[currentIndex]
+
+		// Dodajemy animację dla płynnej zmiany obrazu
+		lightboxImg.style.opacity = '0'
+
+		setTimeout(() => {
+			lightboxImg.src = item.src
+			lightboxImg.alt = item.alt
+			lightboxTitle.textContent = item.title
+			lightboxDesc.textContent = item.description
+			lightboxImg.style.opacity = '1'
+		}, 300)
+	}
+
+	// Zamykanie lightboxa
+	lightboxClose.addEventListener('click', closeLightbox)
+	lightbox.addEventListener('click', function (e) {
+		if (e.target === lightbox) {
+			closeLightbox()
+		}
+	})
+
+	// Obsługa klawiatury
+	document.addEventListener('keydown', function (e) {
+		if (!lightbox.classList.contains('active')) return
+
+		if (e.key === 'Escape') {
+			closeLightbox()
+		} else if (e.key === 'ArrowRight') {
+			nextImage()
+		} else if (e.key === 'ArrowLeft') {
+			prevImage()
+		}
+	})
+
+	function closeLightbox() {
+		lightbox.classList.remove('active')
+		document.body.classList.remove('lightbox-open')
+	}
+
+	// Nawigacja do następnego obrazu
+	lightboxNext.addEventListener('click', nextImage)
+
+	function nextImage() {
+		currentIndex = (currentIndex + 1) % portfolioData.length
+		updateLightboxContent()
+	}
+
+	// Nawigacja do poprzedniego obrazu
+	lightboxPrev.addEventListener('click', prevImage)
+
+	function prevImage() {
+		currentIndex = (currentIndex - 1 + portfolioData.length) % portfolioData.length
+		updateLightboxContent()
+	}
+
+	// Dodaj obsługę gestów dotykowych dla urządzeń mobilnych
+	let touchStartX = 0
+	let touchEndX = 0
+
+	lightbox.addEventListener('touchstart', function (e) {
+		touchStartX = e.changedTouches[0].screenX
+	})
+
+	lightbox.addEventListener('touchend', function (e) {
+		touchEndX = e.changedTouches[0].screenX
+		handleSwipe()
+	})
+
+	function handleSwipe() {
+		const swipeThreshold = 50
+		if (touchEndX < touchStartX - swipeThreshold) {
+			// Przesunięcie w lewo - następne zdjęcie
+			nextImage()
+		} else if (touchEndX > touchStartX + swipeThreshold) {
+			// Przesunięcie w prawo - poprzednie zdjęcie
+			prevImage()
+		}
+	}
 })
