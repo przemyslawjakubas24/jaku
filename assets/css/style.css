@@ -628,18 +628,31 @@ footer {
 }
 
 .lightbox-close {
-	position: absolute;
-	top: -40px;
-	right: 0;
+	position: fixed; /* Zmiana z absolute na fixed, aby pozycjonować względem okna przeglądarki */
+	top: 20px; /* Zmiana z -40px na 20px od góry */
+	right: 20px; /* Dodanie prawego marginesu */
 	color: white;
-	font-size: 35px;
-	font-weight: bold;
 	cursor: pointer;
 	transition: var(--transition);
+	width: 40px;
+	height: 40px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background-color: transparent; /* Przezroczyste tło */
+	border: none;
+	border-radius: 50%; /* Zaokrąglenie do koła */
+	z-index: 2100; /* Zapewnienie, że jest nad wszystkimi elementami */
+}
+
+.lightbox-close i {
+	font-size: 28px;
 }
 
 .lightbox-close:hover {
 	color: var(--primary-color);
+	transform: scale(1.1);
+	background-color: rgba(0, 0, 0, 0.8); /* Ciemniejsze tło przy najechaniu */
 }
 
 .lightbox-prev,
