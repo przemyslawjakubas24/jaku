@@ -4,12 +4,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Profesjonalne dekoracje balonowe na każdą okazję - chrzty, komunie, urodziny, jubileusze, wesela i eventy firmowe. Zapraszamy!">
     <meta name="robots" content="noindex, nofollow">
     <meta name="theme-color" content="#1fe0e0">
     <meta name="apple-mobile-web-app-status-bar-style" content="#1fe0e0">
     <meta name="msapplication-TileColor" content="#1fe0e0">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.ewajakubas.pl/">
+    <meta property="og:title" content="Ewa Jakubas - Profesjonalne dekoracje balonowe">
+    <meta property="og:description"
+        content="Profesjonalne dekoracje balonowe na każdą okazję - chrzty, komunie, urodziny, jubileusze, wesela i eventy firmowe. Zapraszamy!">
+    <meta property="og:image" content="./assets/images/og-image.jpg">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://www.ewajakubas.pl/">
+    <meta property="twitter:title" content="Ewa Jakubas - Profesjonalne dekoracje balonowe">
+    <meta property="twitter:description"
+        content="Profesjonalne dekoracje balonowe na każdą okazję - chrzty, komunie, urodziny, jubileusze, wesela i eventy firmowe. Zapraszamy!">
+    <meta property="twitter:image" content="./assets/images/og-image.jpg">
+
     <title>Ewa Jakubas - Profesjonalne dekoracje balonowe</title>
+
+    <!-- Preload critical assets -->
     <link rel="preload" href="./assets/css/style.css" as="style">
+    <link rel="preload" href="./assets/fonts/fontawesome-webfont.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="./assets/images/hero-bg.jpg" as="image" type="image/jpeg">
+
     <link rel="stylesheet" href="./assets/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -20,20 +44,21 @@
 
 <body>
     <header>
-        <h1>Ewa Jakubas - dekoracja balonowe</h1>
+        <h1>Ewa Jakubas - dekoracje balonowe</h1>
         <div class="header-icons-container">
             <div class="logo">
-                <a href="/">
-                    <img src="./assets/images/logo.svg" alt="Logo" class="logo__image">
+                <a href="/" aria-label="Strona główna">
+                    <img src="./assets/images/logo.svg" alt="Logo Ewa Jakubas dekoracje balonowe" class="logo__image"
+                        width="80" height="80">
                 </a>
             </div>
-            <div class="hamburger">
+            <button class="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="nav-menu">
                 <span></span>
                 <span></span>
                 <span></span>
-            </div>
+            </button>
         </div>
-        <nav class="nav-menu">
+        <nav class="nav-menu" id="nav-menu">
             <ul class="nav-links">
                 <li><a href="#home">Strona główna</a></li>
                 <li><a href="#services">Usługi</a></li>
@@ -43,188 +68,214 @@
         </nav>
     </header>
 
-    <section id="home" class="hero">
-        <div class="hero-content">
-            <h2>Aranżacje które ożywią Twoje wydarzenie</h2>
-            <p>Profesjonalne dekoracje balonowe na każdą okazję</p>
-            <a href="#contact" class="btn">Zamów wycenę</a>
-        </div>
-    </section>
+    <main>
+        <section id="home" class="hero" aria-labelledby="hero-title">
+            <div class="hero-content">
+                <h2 id="hero-title">Aranżacje które ożywią Twoje wydarzenie</h2>
+                <p>Profesjonalne dekoracje balonowe na każdą okazję</p>
+                <a href="#contact" class="btn">Zamów wycenę</a>
+            </div>
+        </section>
 
-    <section id="services" class="services">
-        <h2>Nasze usługi</h2>
-        <div class="services-container">
-            <div class="service-card">
-                <i class="fas fa-water"></i>
-                <h3>Chrzest</h3>
-                <p>Eleganckie dekoracje balonowe podkreślające wyjątkowość tego duchowego wydarzenia.</p>
+        <section id="services" class="services" aria-labelledby="services-title">
+            <h2 id="services-title">Nasze usługi</h2>
+            <div class="services-container">
+                <div class="service-card">
+                    <i class="fas fa-water" aria-hidden="true"></i>
+                    <h3>Chrzest</h3>
+                    <p>Eleganckie dekoracje balonowe podkreślające wyjątkowość tego duchowego wydarzenia.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-church" aria-hidden="true"></i>
+                    <h3>Komunia</h3>
+                    <p>Stonowane i wyjątkowe aranżacje balonowe idealnie pasujące do tej ważnej uroczystości.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-birthday-cake" aria-hidden="true"></i>
+                    <h3>Urodziny i jubileusze</h3>
+                    <p>Kolorowe kompozycje balonowe, cyfry, balony z helem i personalizowane balony.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-camera" aria-hidden="true"></i>
+                    <h3>Foto ścianki</h3>
+                    <p>Efektowne tła do zdjęć wykonane z balonów, idealne na eventy i uroczystości.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-archway" aria-hidden="true"></i>
+                    <h3>Bramy</h3>
+                    <p>Imponujące bramy balonowe podkreślające wejście na Twoje wydarzenie.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-cloud" aria-hidden="true"></i>
+                    <h3>Balony z helem</h3>
+                    <p>Pojedyncze balony oraz bukiety z helem w różnych kolorach i kształtach.</p>
+                </div>
+                <div class="service-card">
+                    <i class="fas fa-chair" aria-hidden="true"></i>
+                    <h3>Dekoracja sali</h3>
+                    <p>Kompleksowe dekoracje pomieszczeń dopasowane do charakteru i tematu wydarzenia.</p>
+                </div>
             </div>
-            <div class="service-card">
-                <i class="fas fa-church"></i>
-                <h3>Komunia</h3>
-                <p>Stonowane i wyjątkowe aranżacje balonowe idealnie pasujące do tej ważnej uroczystości.</p>
-            </div>
-            <!-- <div class="service-card">
-                <i class="fas fa-glass-cheers"></i>
-                <h3>Dekoracje weselne</h3>
-                <p>Łuki, ściany i girlandy balonowe dopasowane do motywu przewodniego Waszego wesela.</p>
-            </div> -->
-            <div class="service-card">
-                <i class="fas fa-birthday-cake"></i>
-                <h3>Urodziny i jubileusze</h3>
-                <p>Kolorowe kompozycje balonowe, cyfry, balony z helem i personalizowane balony.</p>
-            </div>
-            <!-- <div class="service-card">
-                <i class="fas fa-building"></i>
-                <h3>Eventy firmowe</h3>
-                <p>Profesjonalne dekoracje na otwarcia, targi, konferencje i imprezy firmowe.</p>
-            </div> -->
-            <!-- <div class="service-card">
-                <i class="fas fa-baby"></i>
-                <h3>Baby shower</h3>
-                <p>Delikatne i urocze aranżacje balonowe na powitanie maluszka.</p>
-            </div> -->
-            <div class="service-card">
-                <i class="fas fa-camera"></i>
-                <h3>Foto ścianki</h3>
-                <p>Efektowne tła do zdjęć wykonane z balonów, idealne na eventy i uroczystości.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-archway"></i>
-                <h3>Bramy</h3>
-                <p>Imponujące bramy balonowe podkreślające wejście na Twoje wydarzenie.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-cloud"></i>
-                <h3>Balony z helem</h3>
-                <p>Pojedyncze balony oraz bukiety z helem w różnych kolorach i kształtach.</p>
-            </div>
-            <div class="service-card">
-                <i class="fas fa-chair"></i>
-                <h3>Dekoracja sali</h3>
-                <p>Kompleksowe dekoracje pomieszczeń dopasowane do charakteru i tematu wydarzenia.</p>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="portfolio" class="portfolio">
-        <h2>Nasze realizacje</h2>
-        <div class="portfolio-container">
-            <div class="portfolio-item">
-                <img src="./assets/images/gallery/dekoracje_balonowe/sztaluga1os.jpg" alt="Dekoracja na chrzciny"
-                    loading="lazy">
-                <div class="portfolio-overlay">
-                    <h3>Łuk balonowy - Wesele Ani i Marka</h3>
-                    <p>Elegancki łuk w odcieniach złota i bieli</p>
+        <section id="portfolio" class="portfolio" aria-labelledby="portfolio-title">
+            <h2 id="portfolio-title">Nasze realizacje</h2>
+            <div class="portfolio-container">
+                <div class="portfolio-item">
+                    <img src="./assets/images/gallery/dekoracje_balonowe/sztaluga1os.jpg"
+                        alt="Elegancki łuk balonowy w odcieniach złota i bieli na weselu" loading="lazy" width="400"
+                        height="300">
+                    <div class="portfolio-overlay">
+                        <h3>Łuk balonowy - Wesele Ani i Marka</h3>
+                        <p>Elegancki łuk w odcieniach złota i bieli</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="./assets/images/gallery/dekoracje_balonowe/roczek1_800.jpg"
+                        alt="Kompozycja balonowa w stylu rose gold z cyfrą 18" loading="lazy" width="400" height="300">
+                    <div class="portfolio-overlay">
+                        <h3>18 urodziny Julii</h3>
+                        <p>Kompozycja w stylu rose gold z numerem 18</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="./assets/images/gallery/dekoracje_balonowe/firmowe1.jpg"
+                        alt="Girlanda organiczna w kolorach firmowych na otwarciu stacji paliw" loading="lazy"
+                        width="400" height="300">
+                    <div class="portfolio-overlay">
+                        <h3>Otwarcie stacji paliw XYZ</h3>
+                        <p>Girlanda organiczna w kolorach firmowych</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="./assets/images/gallery/dekoracje_balonowe/kolo_golab1os.jpg"
+                        alt="Pastelowa dekoracja balonowa w stylu gender reveal" loading="lazy" width="400"
+                        height="300">
+                    <div class="portfolio-overlay">
+                        <h3>Baby shower dla Kasi</h3>
+                        <p>Pastelowa dekoracja w stylu gender reveal</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="./assets/images/gallery/dekoracje_balonowe/stoly1os.jpg"
+                        alt="Tematyczna dekoracja balonowa z motywem dinozaurów" loading="lazy" width="400"
+                        height="300">
+                    <div class="portfolio-overlay">
+                        <h3>5 urodziny Tomka</h3>
+                        <p>Tematyczna dekoracja z motywem dinozaurów</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="./assets/images/gallery/fotoscianka/scianka6os.jpg"
+                        alt="Organiczna kompozycja balonowa w odcieniach burgundu za stołem Państwa Młodych"
+                        loading="lazy" width="400" height="300">
+                    <div class="portfolio-overlay">
+                        <h3>Ścianka za stół Państwa Młodych</h3>
+                        <p>Organiczna kompozycja w odcieniach burgundu</p>
+                    </div>
                 </div>
             </div>
-            <div class="portfolio-item">
-                <img src="./assets/images/gallery/dekoracje_balonowe/roczek1_800.jpg" alt="Dekoracja urodzinowa">
-                <div class="portfolio-overlay">
-                    <h3>18 urodziny Julii</h3>
-                    <p>Kompozycja w stylu rose gold z numerem 18</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="./assets/images/gallery/dekoracje_balonowe/firmowe1.jpg" alt="Event firmowy">
-                <div class="portfolio-overlay">
-                    <h3>Otwarcie stacji paliw XYZ</h3>
-                    <p>Girlanda organiczna w kolorach firmowych</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="./assets/images/gallery/dekoracje_balonowe/kolo_golab1os.jpg" alt="Baby shower">
-                <div class="portfolio-overlay">
-                    <h3>Baby shower dla Kasi</h3>
-                    <p>Pastelowa dekoracja w stylu gender reveal</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="./assets/images/gallery/dekoracje_balonowe/stoly1os.jpg" alt="Urodziny dziecięce">
-                <div class="portfolio-overlay">
-                    <h3>5 urodziny Tomka</h3>
-                    <p>Tematyczna dekoracja z motywem dinozaurów</p>
-                </div>
-            </div>
-            <div class="portfolio-item">
-                <img src="./assets/images/gallery/fotoscianka/scianka6os.jpg" alt="Ścianka balonowa">
-                <div class="portfolio-overlay">
-                    <h3>Ścianka za stół Państwa Młodych</h3>
-                    <p>Organiczna kompozycja w odcieniach burgundu</p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <section id="contact" class="contact">
-        <h2>Skontaktuj się z nami</h2>
-        <div class="contact-container">
-            <div class="contact-info">
-                <h3>Dane kontaktowe</h3>
-                <p>
-                <address itemscope itemtype="http://schema.org/PostalAddress">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span itemprop="streetAddress">ul. Kolorowa 5</span>
-                    <span itemprop="postalCode">00-001</span> <span itemprop="addressLocality">Warszawa</span>
-                </address>
-                </p>
-                <p><i class="fas fa-phone"></i> <a href="tel:+48123456789">+48 123 456 789</a></p>
-                <p><i class="fas fa-envelope"></i> <a href="mailto:kontakt@balloonmagic.pl">kontakt@balloonmagic.pl</a>
-                </p>
-                <!-- Poprawione ikony social media -->
-                <div class="social-links">
-                    <a href="https://facebook.com/twojstrona" target="_blank" rel="noopener" aria-label="Facebook">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                    <a href="https://instagram.com/twojstrona" target="_blank" rel="noopener" aria-label="Instagram">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://pinterest.com/twojstrona" target="_blank" rel="noopener" aria-label="Pinterest">
-                        <i class="fab fa-pinterest-p"></i>
-                    </a>
-                    <a href="https://tiktok.com/@twojstrona" target="_blank" rel="noopener" aria-label="TikTok">
-                        <i class="fab fa-tiktok"></i>
-                    </a>
+        <section id="contact" class="contact" aria-labelledby="contact-title">
+            <h2 id="contact-title">Skontaktuj się z nami</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h3>Dane kontaktowe</h3>
+                    <p>
+                    <address itemscope itemtype="http://schema.org/PostalAddress">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
+                        <span itemprop="streetAddress">ul. Kolorowa 5</span>
+                        <span itemprop="postalCode">00-001</span> <span itemprop="addressLocality">Warszawa</span>
+                    </address>
+                    </p>
+                    <p><i class="fas fa-phone" aria-hidden="true"></i> <a href="tel:+48123456789">+48 123 456 789</a>
+                    </p>
+                    <p><i class="fas fa-envelope" aria-hidden="true"></i> <a
+                            href="mailto:kontakt@balloonmagic.pl">kontakt@balloonmagic.pl</a></p>
+
+                    <div class="social-links">
+                        <a href="https://facebook.com/twojstrona" target="_blank" rel="noopener" aria-label="Facebook">
+                            <i class="fab fa-facebook-f" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://instagram.com/twojstrona" target="_blank" rel="noopener"
+                            aria-label="Instagram">
+                            <i class="fab fa-instagram" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://pinterest.com/twojstrona" target="_blank" rel="noopener"
+                            aria-label="Pinterest">
+                            <i class="fab fa-pinterest-p" aria-hidden="true"></i>
+                        </a>
+                        <a href="https://tiktok.com/@twojstrona" target="_blank" rel="noopener" aria-label="TikTok">
+                            <i class="fab fa-tiktok" aria-hidden="true"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="contact-form">
+                    <h3>Wyślij zapytanie</h3>
+                    <form id="contact-form" aria-label="Formularz kontaktowy">
+                        <div class="form-group">
+                            <label for="name">Imię</label>
+                            <input type="text" id="name" placeholder="Imię" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Email" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="phone">Telefon</label>
+                            <input type="tel" id="phone" placeholder="Telefon">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="event-type">Rodzaj wydarzenia</label>
+                            <input type="text" id="event-type" placeholder="Rodzaj wydarzenia">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="event-date">Data wydarzenia</label>
+                            <input type="date" id="event-date" placeholder="Data wydarzenia">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="message">Twoja wiadomość</label>
+                            <textarea id="message" placeholder="Twoja wiadomość" required></textarea>
+                        </div>
+
+                        <button type="submit" class="btn">Wyślij wiadomość</button>
+                    </form>
                 </div>
             </div>
-            <div class="contact-form">
-                <h3>Wyślij zapytanie</h3>
-                <form>
-                    <input type="text" placeholder="Imię i nazwisko" required>
-                    <input type="email" placeholder="Email" required>
-                    <input type="text" placeholder="Telefon">
-                    <input type="text" placeholder="Rodzaj wydarzenia">
-                    <input type="text" class="date-input" placeholder="Data wydarzenia" onfocus="this.type='date'">
-                    <textarea placeholder="Twoja wiadomość" required></textarea>
-                    <button type="submit" class="btn">Wyślij wiadomość</button>
-                </form>
-            </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
     <footer>
-        <p>&copy; 2025 Ewa Jakubas. Wszelkie prawa zastrzeżone.</p>
+        <p>&copy; <time datetime="2025">2025</time> Ewa Jakubas. Wszelkie prawa zastrzeżone.</p>
     </footer>
 
-    <!-- Przycisk "Scroll to Top" -->
-    <button id="scrollToTop" class="scroll-to-top btn" type="button" title="Przewiń do góry">
-        <i class="fas fa-arrow-up"></i>
+    <button id="scrollToTop" class="scroll-to-top btn" type="button" aria-label="Przewiń do góry">
+        <i class="fas fa-arrow-up" aria-hidden="true"></i>
     </button>
 
-    <div id="portfolioLightbox" class="lightbox">
+    <div id="portfolioLightbox" class="lightbox" role="dialog" aria-modal="true" aria-hidden="true">
         <div class="lightbox-content">
-            <span class="lightbox-close"><i class="fas fa-times"></i></span>
-            <img class="lightbox-image" src="" alt="">
+            <button class="lightbox-close" aria-label="Zamknij galerię"><i class="fas fa-times"
+                    aria-hidden="true"></i></button>
+            <img class="lightbox-image" src="" alt="" loading="lazy">
             <div class="lightbox-caption">
                 <h3 class="lightbox-title"></h3>
                 <p class="lightbox-description"></p>
             </div>
-            <button class="lightbox-prev" title="Previous" type="button"><i class="fas fa-chevron-left"></i></button>
-            <button class="lightbox-next" title="Next" type="button"><i class="fas fa-chevron-right"></i></button>
+            <button class="lightbox-prev" aria-label="Poprzednie zdjęcie" type="button"><i class="fas fa-chevron-left"
+                    aria-hidden="true"></i></button>
+            <button class="lightbox-next" aria-label="Następne zdjęcie" type="button"><i class="fas fa-chevron-right"
+                    aria-hidden="true"></i></button>
         </div>
     </div>
 
-    <link rel="preload" href="./assets/js/main.js" as="script">
     <script src="./assets/js/main.js" defer></script>
 </body>
 

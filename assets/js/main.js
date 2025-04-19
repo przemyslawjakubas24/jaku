@@ -453,4 +453,207 @@ document.addEventListener('DOMContentLoaded', function () {
 		// Dodaj klasę sticky przy przewijaniu
 		header.classList.toggle('sticky', window.scrollY > 0)
 	})
+
+	// Testimonials Carousel
+	function initTestimonialsCarousel() {
+		const track = document.querySelector('.testimonials-track')
+		const items = document.querySelectorAll('.testimonial-item')
+		const prevBtn = document.querySelector('.carousel-prev')
+		const nextBtn = document.querySelector('.carousel-next')
+		const dotsContainer = document.querySelector('.carousel-dots')
+
+		if (!track || items.length === 0) return
+
+		let itemWidth = 0
+		let itemsPerScreen = 3
+		let currentIndex = 0
+		const totalItems = items.length
+
+		// Create dots
+		const totalSlides = Math.max(1, Math.ceil((totalItems - itemsPerScreen + 1) / 1))
+		for (let i = 0; i < totalSlides; i++) {
+			const dot = document.createElement('div')
+			dot.classList.add('dot')
+			if (i === 0) dot.classList.add('active')
+			dot.addEventListener('click', () => {
+				currentIndex = i
+				updateCarousel()
+			})
+			dotsContainer.appendChild(dot)
+		}
+
+		// Function to calculate dimensions
+		function calculateDimensions() {
+			const carousel = track.parentElement
+			let containerWidth
+
+			// Use fixed width on large screens, percentage on smaller screens
+			if (window.innerWidth >= 1300) {
+				containerWidth = 1200 // Fixed width as specified
+			} else if (window.innerWidth >= 992) {
+				containerWidth = carousel.offsetWidth
+			} else {
+				containerWidth = carousel.offsetWidth
+			}
+
+			// Determine items per screen based on screen width
+			if (window.innerWidth >= 992) {
+				itemsPerScreen = 3
+			} else if (window.innerWidth >= 768) {
+				itemsPerScreen = 2
+			} else {
+				itemsPerScreen = 1
+			}
+
+			// Calculate item width - accounting for margins
+			itemWidth = containerWidth / itemsPerScreen
+
+			// Set width for each item (subtract margins)
+			const actualItemWidth = itemWidth - 30 // 15px margin on each side
+			items.forEach(item => {
+				item.style.flex = `0 0 ${actualItemWidth}px`
+				item.style.maxWidth = `${actualItemWidth}px`
+			})
+
+			// Update dots based on new itemsPerScreen
+			updateDots()
+
+			// Update carousel position
+			updateCarousel(true)
+		}
+
+		// Function to update dots based on current items per screen
+		function updateDots() {
+			// Clear existing dots
+			dotsContainer.innerHTML = ''
+
+			// Calculate new number of slides
+			const maxIndex = Math.max(0, totalItems - itemsPerScreen)
+			const totalSlides = maxIndex + 1
+
+			// Create new dots
+			for (let i = 0; i < totalSlides; i++) {
+				const dot = document.createElement('div')
+				dot.classList.add('dot')
+				if (i === Math.min(currentIndex, maxIndex)) dot.classList.add('active')
+				dot.addEventListener('click', () => {
+					currentIndex = i
+					updateCarousel()
+				})
+				dotsContainer.appendChild(dot)
+			}
+		}
+
+		// Function to update carousel position
+		function updateCarousel(skipAnimation) {
+			const maxIndex = Math.max(0, totalItems - itemsPerScreen)
+
+			// Keep currentIndex within bounds
+			if (currentIndex < 0) {
+				currentIndex = 0
+			} else if (currentIndex > maxIndex) {
+				currentIndex = maxIndex
+			}
+
+			const translateX = -currentIndex * itemWidth
+
+			if (skipAnimation) {
+				track.style.transition = 'none'
+			} else {
+				track.style.transition = 'transform 0.5s ease'
+			}
+
+			track.style.transform = `translateX(${translateX}px)`
+
+			// Reset transition after transform is complete
+			if (skipAnimation) {
+				setTimeout(() => {
+					track.style.transition = 'transform 0.5s ease'
+				}, 10)
+			}
+
+			// Update active dot
+			document.querySelectorAll('.dot').forEach((dot, i) => {
+				dot.classList.toggle('active', i === currentIndex)
+			})
+
+			// Update button states
+			prevBtn.disabled = currentIndex === 0
+			prevBtn.style.opacity = currentIndex === 0 ? '0.5' : '1'
+			nextBtn.disabled = currentIndex === maxIndex
+			nextBtn.style.opacity = currentIndex === maxIndex ? '0.5' : '1'
+		}
+
+		// Event listeners for buttons
+		prevBtn.addEventListener('click', () => {
+			currentIndex--
+			updateCarousel()
+		})
+
+		nextBtn.addEventListener('click', () => {
+			currentIndex++
+			updateCarousel()
+		})
+
+		// Mouse wheel scrolling
+		track.parentElement.addEventListener(
+			'wheel',
+			e => {
+				e.preventDefault()
+				if (e.deltaY > 0) {
+					// Scroll down = next
+					if (currentIndex < totalItems - itemsPerScreen) {
+						currentIndex++
+						updateCarousel()
+					}
+				} else {
+					// Scroll up = previous
+					if (currentIndex > 0) {
+						currentIndex--
+						updateCarousel()
+					}
+				}
+			},
+			{ passive: false }
+		)
+
+		// Touch events for mobile
+		let touchStartX = 0
+		let touchEndX = 0
+
+		track.parentElement.addEventListener('touchstart', e => {
+			touchStartX = e.changedTouches[0].screenX
+		})
+
+		track.parentElement.addEventListener('touchend', e => {
+			touchEndX = e.changedTouches[0].screenX
+			handleSwipe()
+		})
+
+		function handleSwipe() {
+			const swipeThreshold = 50
+			if (touchEndX < touchStartX - swipeThreshold) {
+				// Swipe left = next
+				if (currentIndex < totalItems - itemsPerScreen) {
+					currentIndex++
+					updateCarousel()
+				}
+			} else if (touchEndX > touchStartX + swipeThreshold) {
+				// Swipe right = previous
+				if (currentIndex > 0) {
+					currentIndex--
+					updateCarousel()
+				}
+			}
+		}
+
+		// Initialize and update on resize
+		calculateDimensions()
+		window.addEventListener('resize', () => {
+			calculateDimensions()
+		})
+	}
+
+	// Initialize testimonials carousel
+	initTestimonialsCarousel()
 })
