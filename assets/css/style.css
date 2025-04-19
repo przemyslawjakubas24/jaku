@@ -91,21 +91,21 @@ header.sticky h1 {
 header .logo {
 	width: 80px;
 	height: 80px;
+	transition: all 0.3s ease;
 }
 
 header .logo .logo__image {
 	height: 80px;
+	transition: all 0.3s ease;
 }
 
-.logo img {
-	width: 80px;
-	height: 80px; /* Domyślny rozmiar */
-	transition: all 0.3s ease; /* Płynne przejście dla wszystkich zmian */
-}
-
-.sticky .logo img {
+header.sticky .logo {
 	width: 60px;
-	height: 60px; /* Rozmiar podczas przewijania */
+	height: 60px;
+}
+
+header.sticky .logo .logo__image {
+	height: 60px;
 }
 
 nav ul {
@@ -516,6 +516,10 @@ footer {
 		flex-direction: column;
 	}
 
+	header.sticky {
+		padding: 10px 5%; /* Zredukowane padding dla trybu sticky */
+	}
+
 	/* Nagłówek h1 zajmuje całą szerokość i jest wyśrodkowany */
 	header h1 {
 		font-size: 1.5rem;
@@ -523,6 +527,11 @@ footer {
 		width: 100%;
 		text-align: center;
 		margin-right: 0;
+	}
+
+	header.sticky h1 {
+		font-size: 1.2rem; /* Zmniejszona czcionka w trybie sticky */
+		margin-bottom: 5px; /* Mniejszy margines w trybie sticky */
 	}
 
 	/* Nowy kontener dla logo i hamburger menu */
@@ -534,15 +543,30 @@ footer {
 		margin-top: 5px;
 	}
 
+	header.sticky .header-icons-container {
+		margin-top: 2px; /* Mniejszy margines w trybie sticky */
+	}
+
 	/* Logo po lewej stronie */
 	header .logo {
 		width: 60px;
 		height: 60px;
 		margin-right: auto;
+		transition: all 0.3s ease;
 	}
 
 	header .logo .logo__image {
 		height: 60px;
+		transition: all 0.3s ease;
+	}
+
+	header.sticky .logo {
+		width: 40px;
+		height: 40px;
+	}
+
+	header.sticky .logo .logo__image {
+		height: 40px;
 	}
 
 	/* Hamburger po prawej stronie */
@@ -613,6 +637,10 @@ footer {
 		font-size: 1.3rem;
 	}
 
+	header.sticky h1 {
+		font-size: 1.1rem; /* Jeszcze mniejsza czcionka dla bardzo małych ekranów */
+	}
+
 	header .logo {
 		width: 50px;
 		height: 50px;
@@ -620,6 +648,15 @@ footer {
 
 	header .logo .logo__image {
 		height: 50px;
+	}
+
+	header.sticky .logo {
+		width: 35px;
+		height: 35px;
+	}
+
+	header.sticky .logo .logo__image {
+		height: 35px;
 	}
 
 	.nav-menu {

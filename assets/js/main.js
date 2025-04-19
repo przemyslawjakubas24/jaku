@@ -460,6 +460,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	}
 
 	// Sticky header and logo resize on scroll
+	// Zakomentowany oryginalny event listener, który powoduje problem:
+	/* 
 	window.addEventListener('scroll', function () {
 		const header = document.querySelector('header') // Zmieniono z '.navbar' na 'header'
 		header.classList.toggle('sticky', window.scrollY > 0)
@@ -472,5 +474,18 @@ document.addEventListener('DOMContentLoaded', function () {
 			logo.style.width = '80px'
 			logo.style.height = '80px'
 		}
+	})
+	*/
+
+	// Sticky header i zmiana rozmiaru logo podczas przewijania
+	window.addEventListener('scroll', function () {
+		const header = document.querySelector('header')
+		const logo = document.querySelector('.logo')
+
+		// Dodaj klasę sticky przy przewijaniu
+		header.classList.toggle('sticky', window.scrollY > 0)
+
+		// Nie używamy już inline stylów, bo obsługujemy to przez CSS
+		// Usunięte linie ze style.width i style.height
 	})
 })
